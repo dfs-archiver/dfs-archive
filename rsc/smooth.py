@@ -47,7 +47,7 @@ def shift_whitespace(soup: bs4.element.Tag) -> None:
     if re.compile(r"p$|div$|h[1-6]$").match(parent.name):
       continue
     
-    match = re.compile(r"^\s+|\s+$").match(parent.get_text())
+    match = re.compile(r"^\s+|\s+$").search(parent.get_text())
     if not match:
       continue
     left = match.start() == 0

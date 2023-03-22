@@ -9,12 +9,22 @@ MD_SYNTAX = {
   "span": ""
 }
 
+ESCAPE = re.compile(r"([\\`*_\{\}\[\]<>\(\)#\+\-\.!])")
+
+def escape_char(md: str) -> str:
+  out, _ = ESCAPE.subn(r"\\\1", md)
+  return out
+
 def body2md(body: bs4.element.Tag, link_suffix: bool) -> str:
+  # escape all characters, before beginning to convert
+  for nav_string in body.find_all(string=True):
+    nav_string.replace_with(escape_char(nav_string))
+
   convert_links_to_md(body, link_suffix)
-  out = JUSTIFY_TAG + "\n\n# " + body.contents[0].get_text() + "\n"
+  out = JUSTIFY_TAG + "\n\n# " + body.contents[0].get_text() + "\n\n"
   divs = [div2md(div) for div in body.contents[1:]]
   out += "\n\n".join(divs)
-  return out
+  return out + "\n"
 
 def div2md(div: bs4.element.Tag, min_out_h: int=2, min_in_h: int=3) -> str:
   out = ""
@@ -22,7 +32,7 @@ def div2md(div: bs4.element.Tag, min_out_h: int=2, min_in_h: int=3) -> str:
     if p.name.startswith("h"):
       n = int(p.name[1])
       n = n - min_in_h + min_out_h
-      out += "\n" + "#" * n + " "
+      out += "\n\n" + "#" * n + " "
 
     else:
       out += "\n\n"

@@ -2,6 +2,7 @@ import re
 from bs4.element import Tag
 
 REMOVE = re.compile(
+  # Pathetic Life
   r"^This is an entry retyped from an on-paper zine.+Pathetic Life|"
   r"^Pathetic Life$|"
   r"^PATHETIC LIFE$|"
@@ -10,7 +11,12 @@ REMOVE = re.compile(
   r"^itsdougholland.com$|"
   r"^Next: Part|"
   r"^Part 1 •|"
-  r"^From Pathetic Life #\d\d?$"
+  r"^From Pathetic Life #\d\d?$|"
+  # Breakfast at the Diner
+  r"^Breakfast at the Diner$|"
+  r"^I'm a grumpy old.+strong suit\.$|"
+  r"^Yeah, I'm aware.+coronavirus.+get off my lawn\.$|"
+  r"^And remember, decent.+tip\.$"
 )
 
 def clean_contents(soup: Tag) -> Tag:
