@@ -9,7 +9,7 @@ ATTR_WHITELIST = re.compile(
 
 CSS_WHITELIST = re.compile(
   r"text-align:(?:center|right);$|"
-  r"margin-left:(?:40px|80px);$|"
+  r"margin-left:(?:40px|80px|120px);$|"
   r"font-family:courier;$|"
   r"color:"
 )
@@ -17,7 +17,7 @@ CSS_WHITELIST = re.compile(
 def validate_attrs(attrs: dict[str, str]):
   for key in attrs:
     if not ATTR_WHITELIST.search(key):
-      raise Exception("Unrecognized attribute", attrs[key])
+      raise Exception("Unrecognized attribute", key)
 
 def validate_css(styles: list[str]):
   for style in styles:

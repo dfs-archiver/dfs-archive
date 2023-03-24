@@ -16,7 +16,12 @@ ATTR_BLACKLIST = re.compile(
   r"^dir|"
   r"^face|"
   r"^title$|"
-  r"^data-href-url$"
+  r"^data-href-url$|"
+  r"^data-blogger-escaped-$|"
+  r"^rel$|"
+  r"^target$|"
+  r"^aria-level$|"
+  r"^role$"
 )
 
 CSS_BLACKLIST = re.compile(
@@ -27,8 +32,11 @@ CSS_BLACKLIST = re.compile(
   r"^background:transparent|"
   r"^font-style:normal;$|"
   r"^color:black|"
-  r"^clear:both;$|"
-  r"^font-family:inherit;$"
+  r"^clear:(?:both|right);$|"
+  r"^font-family:inherit;$|"
+  r"^font-weight:normal;$|"
+  r"^margin-(?:left|right):1em;$|"
+  r"^float:right;$"
 )
 
 def clean_attrs(attrs: dict[str, str]) -> dict[str, str]:
