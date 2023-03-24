@@ -21,7 +21,8 @@ ATTR_BLACKLIST = re.compile(
   r"^rel$|"
   r"^target$|"
   r"^aria-level$|"
-  r"^role$"
+  r"^role$|"
+  r"^data-dobid$"
 )
 
 CSS_BLACKLIST = re.compile(
@@ -36,7 +37,22 @@ CSS_BLACKLIST = re.compile(
   r"^font-family:inherit;$|"
   r"^font-weight:normal;$|"
   r"^margin-(?:left|right):1em;$|"
-  r"^float:right;$"
+  r"^float:right;$|"
+  r"^background-color:white;$|"
+  r"^-webkit-text-stroke-width:0px;$|"
+  r"^font-size:17\.6px;$|"
+  r"^font-variant-caps:normal;$|"
+  r"^font-variant-ligatures:normal;$|"
+  r"^font-weight:400;$|"
+  r"^letter-spacing:normal;$|"
+  r"^orphans:|"
+  r"^text-align:start;$|"
+  r"^text-decoration-.+:initial;$|"
+  r"^text-indent:0px;$|"
+  r"^text-transform:none;$|"
+  r"^white-space:normal;$|"
+  r"^widows:|"
+  r"^word-spacing:0px;$"
 )
 
 def clean_attrs(attrs: dict[str, str]) -> dict[str, str]:
