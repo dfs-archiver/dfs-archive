@@ -16,7 +16,17 @@ REMOVE = re.compile(
   r"^Breakfast at the Diner$|"
   r"^I'm a grumpy old.+strong suit\.$|"
   r"^Yeah, I'm aware.+coronavirus.+get off my lawn\.$|"
-  r"^And remember, decent.+tip\.$"
+  r"^And remember, decent.+tip\.$|"
+  # Cranky Old Fart
+  r"^Cranky Old Fart$|"
+  r"along with anything off the internet.+opinions fresh.+invited\.$|"
+  # Neverending Film Festival
+  r"^(?:The )?Neverending Film Festival$|"
+  r"^The Neverending$|"
+  r"^Film Festival$|"
+  r"^THE NEVERENDING$|"
+  r"^FILM FESTIVAL #\d+$|"
+  r"^Movies, movies, more movies$"
 )
 
 def clean_contents(soup: Tag) -> Tag:

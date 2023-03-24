@@ -4,7 +4,7 @@ import re, bs4
 # Regex to remove all characters that are not allowed in github anchors
 # No uppercase characters, they should already be converted before regex is used
 ANCHOR_REMOVE = re.compile("[^a-zäöü0-9_\\- ]")
-URL = re.compile(r"https?://|www\.")
+URL = re.compile(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+|mailto:.+")
 
 """
 github-markup automatically creates anchors for headers.
@@ -34,14 +34,17 @@ def resolve(file0: str, href: str) -> Path:
   # concatenate parent directory with href
   path = path.parent / href
   # resolve relative paths ("../")
-  path = path.resolve(True)
-  assert(path.is_file())
+  path = path.resolve()
+  if not path.is_file():
+    print("Could not find file", path)
+    return None
   return path
 
 def convert_links_absolute(soup: bs4.element.Tag, file0: Path) -> int:
   i = 0
   for link in soup.find_all("a"):
-    href = link["href"]
+    href = correct_link(link["href"])
+    link["href"] = href
     if is_url(href):
       continue
     path = resolve(file0, href)
@@ -69,3 +72,10 @@ def href2md(href: str, suffix: bool) -> str:
     return href
   suffix = ".md" if suffix else ""
   return href.replace(".xhtml", suffix)
+
+def correct_link(href):
+  href = href.strip()
+  # specific case for incorrect link on this blog
+  if href == "ttps://www.itsdougholland.com/2021/05/an-unhappy-ending.html":
+    href = "../05/an-unhappy-ending.html"
+  return href
