@@ -1,5 +1,5 @@
 from pathlib import Path
-import re, bs4
+import re, os, bs4
 
 # Regex to remove all characters that are not allowed in github anchors
 # No uppercase characters, they should already be converted before regex is used
@@ -58,7 +58,7 @@ def is_url(href: str) -> bool:
 def relative_to(file0: Path, href: tuple[Path, str]) -> str:
   path, anchor = href
   anchor = "#" + anchor if anchor else ""
-  return path.relative_to(file0.parent).as_posix() +  anchor
+  return Path(os.path.relpath(path, file0.parent)).as_posix() + anchor
 
 def convert_links_to_md(soup: bs4.element.Tag, suffix: bool) -> None:
   for a in soup.find_all("a"):
