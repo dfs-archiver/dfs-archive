@@ -33,6 +33,8 @@ def include_node(node, include_images: bool) -> bool:
 def node_type(node) -> int:
   if type(node) == bs4.element.NavigableString:
     return 1
+  elif type(node) in (bs4.element.Stylesheet, bs4.element.Script):
+    return 0
   elif type(node) != bs4.element.Tag:
     raise Exception("Expected node to be a Tag or NavigableString but got", type(node))
   elif node.name == "img":

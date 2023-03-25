@@ -9,7 +9,7 @@ ATTR_WHITELIST = re.compile(
 
 CSS_WHITELIST = re.compile(
   r"text-align:(?:center|right);$|"
-  r"margin-left:(?:40px|80px|120px);$|"
+  r"margin-left:\d+px;$|"
   r"font-family:(?:courier|Calibri);$|"
   r"color:"
 )
