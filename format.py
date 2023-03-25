@@ -71,7 +71,7 @@ def format_bad_files():
   for i in range(len(INDEX_BAD)):
     issue_number = i + 1
     href = INDEX_BAD[i]
-    out0 = BAD_DIR / f"BAD-{leading_zero(issue_number)}.xhtml"
+    out0 = BAD_DIR / f"BAD-{leading_zero(issue_number, 3)}.xhtml"
     soup = xhtml()
     title = f"Breakfast at the Diner #{issue_number}"
     add_title_tag(soup, title)
@@ -109,7 +109,7 @@ def format_cof_files():
   for i in range(len(INDEX_COF)):
     entry_number = i + 1
     href = INDEX_COF[i]
-    out0 = COF_DIR / f"COF-{leading_zero(entry_number)}.xhtml"
+    out0 = COF_DIR / f"COF-{leading_zero(entry_number, 3)}.xhtml"
     soup = xhtml()
 
     try:
@@ -148,7 +148,7 @@ def format_nff_files():
   for i in range(len(INDEX_NFF)):
     entry_number = i + 1
     href = INDEX_NFF[i]
-    out0 = NFF_DIR / f"NFF-{leading_zero(entry_number)}.xhtml"
+    out0 = NFF_DIR / f"NFF-{leading_zero(entry_number, 3)}.xhtml"
     soup = xhtml()
     title = f"Neverending Film Festival #{entry_number}"
     add_title_tag(soup, title)
@@ -223,7 +223,7 @@ def format_misc_files(exclude_files: list[Path]):
       div.append(body)
       body.unwrap()
 
-      file_name = "".join(c for c in header_text if c.isalnum() or c in " -_").strip()
+      file_name = "".join(c for c in header_text if c.isalnum() or c in " -_").strip().replace(" ", "-")
       file_name += ".xhtml"
       out0 = MISC_DIR / file_name
 

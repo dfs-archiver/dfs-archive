@@ -21,7 +21,8 @@ def body2md(body: bs4.element.Tag, link_suffix: bool) -> str:
     nav_string.replace_with(escape_char(nav_string))
 
   convert_links_to_md(body, link_suffix)
-  out = JUSTIFY_TAG + "\n\n# " + body.contents[0].get_text() + "\n\n"
+  # out = JUSTIFY_TAG + "\n\n# " + body.contents[0].get_text() + "\n\n"
+  out = "# " + body.contents[0].get_text() + "\n\n"
   divs = [div2md(div) for div in body.contents[1:]]
   out += "\n\n".join(divs)
   return out + "\n"
