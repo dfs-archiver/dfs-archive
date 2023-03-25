@@ -30,9 +30,7 @@ def convert_links(files: list[Path], link_list: dict[Path, tuple[str, str]]) -> 
   return i
 
 if __name__ == "__main__":
-  with open("link_list.pkl", "rb") as f:
-    link_list = pickle.load(f)
-  with open("new_files.pkl", "rb") as f:
-    files = pickle.load(f)
+  with open("bak2.pkl", "rb") as f:
+    files, link_list = pickle.load(f)
   n = convert_links(files, link_list)
   print("Converted", n, "links")
