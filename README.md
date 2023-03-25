@@ -1,8 +1,6 @@
 # Diary of a Fat Slob
 
-**Under development! Some links may not work and archive is very incomplete.**
-
-This is an archive of Doug Holland's blog <https://www.itsdougholland.com/>. If you want to access the current version of the archive, head over to the [wiki](https://github.com/dfs-archiver/dfs-archive/wiki). Should you encounter any errors, [submit an issue](https://github.com/dfs-archiver/dfs-archive/issues) (requires a GitHub account).
+This is an archive of Doug Holland's blog <https://www.itsdougholland.com/>. If you want to access the current version of the archive, head over to the [wiki](/dfs-archiver/dfs-archive/wiki). You can download the current version of the archive at the [releases](/dfs-archiver/dfs-archive/releases) page. Should you encounter any errors, [submit an issue](/dfs-archiver/dfs-archive/issues) (requires a GitHub account).
 
 ## Motivation
 
