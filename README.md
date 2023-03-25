@@ -11,14 +11,13 @@ I am a big fan of Doug Holland's work and want to preserve it. His website will 
 Archiving the blog consists of several (automatic) steps:
 
   1. Cloning the entire website using [wget](https://www.gnu.org/software/wget/).
-  2. Removing all files that are not needed for further processing (e.g. `.js` files).
-  3. Building indexes of the various series (e.g. _Pathetic Life_, _Breakfast at the Diner_).
-  4. Formatting each post to a clean and minimal `XHTML` format.
-  5. Reformatting each post based on the series (e.g. moving entry dates to the top of each page).
-  6. Cleaning up the content by removing disclaimers, series titles, etc.
-  7. Packing posts into files based on the series.
-  8. Converting links.
-  9. _(Optional: Converting `XHTML` to `MD`.)_
+  2. Building indexes of the various series (e.g. _Pathetic Life_, _Breakfast at the Diner_).
+  3. Formatting each post to a clean and minimal `XHTML` format.
+  4. Reformatting each post based on the series (e.g. moving entry dates to the top of each page).
+  5. Cleaning up the content by removing disclaimers, series titles, etc.
+  6. Packing posts into files based on the series.
+  7. Converting links.
+  8. _(Optional: Converting `XHTML` to `MD`.)_
 
 ## Specification
 
